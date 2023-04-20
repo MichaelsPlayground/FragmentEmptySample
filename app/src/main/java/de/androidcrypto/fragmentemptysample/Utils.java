@@ -1,4 +1,4 @@
-package de.androidcrypto.nfcmifareultralightexample;
+package de.androidcrypto.fragmentemptysample;
 
 import static android.content.Context.VIBRATOR_SERVICE;
 
@@ -21,7 +21,12 @@ public class Utils {
 
     public static void doVibrate(Activity activity) {
         if (activity != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 ((Vibrator) activity.getSystemService(VIBRATOR_SERVICE)).vibrate(VibrationEffect.createOneShot(150, 10));
+            } else {
+                Vibrator v = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
+                v.vibrate(200);
+            }
         }
     }
 
@@ -31,6 +36,11 @@ public class Utils {
      */
     public static void playSinglePing(Context context) {
         MediaPlayer mp = MediaPlayer.create(context, R.raw.notification_decorative_02);
+        mp.start();
+    }
+
+    private void playDoublePing(Context context) {
+        MediaPlayer mp = MediaPlayer.create(context, R.raw.notification_decorative_01);
         mp.start();
     }
 

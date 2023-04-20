@@ -1,4 +1,4 @@
-package de.androidcrypto.nfcmifareultralightexample;
+package de.androidcrypto.fragmentemptysample;
 
 import org.junit.Test;
 

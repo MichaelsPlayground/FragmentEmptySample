@@ -1,17 +1,28 @@
-package de.androidcrypto.nfcmifareultralightexample;
+package de.androidcrypto.fragmentemptysample;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.FeatureInfo;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 /**
@@ -54,6 +65,7 @@ public class HomeFragment extends Fragment {
         return fragment;
     }
 
+    private final String TAG = "HomeFrame";
     Button licenses;
 
     @Override
@@ -68,6 +80,12 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // toolbar
+        Toolbar myToolbar = (Toolbar) getView().findViewById(R.id.main_toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(myToolbar);
+        setHasOptionsMenu(true);
+
         licenses = getView().findViewById(R.id.btnLicenses);
         licenses.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,6 +144,42 @@ public class HomeFragment extends Fragment {
             }
         }
         return false;
+    }
+
+    /**
+     * section for OptionsMenu
+     */
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
+        super.onCreateOptionsMenu(menu, menuInflater);
+        menuInflater.inflate(R.menu.menu_activity_main, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+
+        if (menuItem.getItemId() == R.id.action_copy_data) {
+            ClipboardManager clipboard = (ClipboardManager)
+                    getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("BasicNfcEmvReader", "abcd");
+            clipboard.setPrimaryClip(clip);
+            // show toast only on Android versions < 13
+            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2)
+                Toast.makeText(getContext(), "copied", Toast.LENGTH_SHORT).show();
+            //return false;
+            return (true);
+        } else if (menuItem.getItemId() == R.id.action_licenses) {
+            Log.i(TAG, "mLicenses");
+            displayLicensesAlertDialog();
+            return true;
+        } else if (menuItem.getItemId() == R.id.action_about) {
+            Log.i(TAG, "mAbout");
+            Intent intent = new Intent(getActivity(), AboutTheAppActivity.class);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(menuItem);
     }
 
 }

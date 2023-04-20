@@ -1,16 +1,18 @@
 <resources>
-    <string name="app_name">NFC Mifare Ultralight Example</string>
-    <string name="home_description">This application reads and writes data from/to a Mifare Ultralight NFC tag.</string>
-    <string name="home_fragments">There are 5 icons to click on:\n1 home = this page\n2 read data\n3 read counter = read one or more counters on the tag\n4 write data\n5 write counter = increment one or more counters</string>
-    <string name="header_read">This app works with a Mifare Ultralight tag for reading</string>
-    <string name="description_read">This example expects a Mifare Ultralight type tag. The tag should use only the well known keys A and B for authentication.\n\nWhen a tag is discovered the data from all records will be read.</string>
-    <string name="header_read_counter">Read the counter</string>
-    <string name="description_read_counter">This example reads an Ultralight C or EV1 tag type and shows the value of the counter(s).\n\nWhen a tag is discovered the data from all records will be read.</string>
-    <string name="nfc_result">NFC read result</string>
-    <string name="header_write">This app works with a Mifare Ultralight tag for writing</string>
-    <string name="description_write">This example writes data to a page on a Mifare Ultralight tag</string>
+    <string name="app_name">Fragement Empty Sample</string>
+    <string name="home_description">This is the description on the home fragment</string>
+    <string name="home_fragments">Some notices for the app usage\n1 home = this page\n2 read data\n3 read counter\n4 write data\n5 write counter</string>
+    <string name="header_read">This is the header on the read fragment</string>
+    <string name="description_read">This is the description on the read fragment</string>
+    <string name="header_read_counter">This is the header on the read counter fragment</string>
+    <string name="description_read_counter">This is the description on the read counter fragment</string>
+    <string name="nfc_result">Read result</string>
+    <string name="header_write">This is the header on the write fragment</string>
+    <string name="description_write">This is the description on the write fragment</string>
     <string name="action_licenses">Used material and their licenses</string>
-    <string name="header_write_counter">Increment the value of a counter</string>
-    <string name="description_write_counter">This example increases the counter on an Ultralight C or EV1 tag type and shows the value of the counter(s).\n\nWhen a tag is discovered the data from all records will be read.</string>
-    <string name="write_counter_warning">The increasing of a counter is not reversible and not resettable, so please act with caution</string>
+    <string name="header_write_counter">This is the header on the write counter fragment</string>
+    <string name="description_write_counter">This is the description on the write counter fragment</string>
+    <string name="write_counter_warning">This is an orange colored warning on the write counter fragment</string>
+    <string name="header_about">This is the header for the about the app activity</string>
+    <string name="description_about">This is the description on the about the app activity</string>
 </resources>

@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'de.androidcrypto.nfcmifareultralightexample'
+    namespace 'de.androidcrypto.fragmentemptysample'
     compileSdk 33
 
     defaultConfig {
